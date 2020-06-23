@@ -15,6 +15,8 @@ class baseapi:
     def interface_api(self, req: dict):
         # 使用 request 完成多请求的改造（post, get, delete）
         # pprint(req)
+        # s=requests.session(**req)
+        # print(s)
         r = requests.request(**req)
         pprint(r.json())
         self.mylog.info("请求日志:" + yaml.dump(r.json()))
