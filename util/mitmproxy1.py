@@ -1,7 +1,6 @@
 import os
 import sys
-sys.path.append('/Users/bytedance/Library/Python/3.8/lib/python/site-packages')
-sys.path.append('/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages')
+
 addon_dir = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(addon_dir)
 from util.Template import Template
@@ -26,4 +25,4 @@ def response(flow: http.HTTPFlow):
             f.write(json_data)
         # print(mustache.template(path=(addon_dir + "/util/test_http.mustache"), data=data))
 
-os.system('mitmdump -s /Users/bytedance/Documents/lfq/interface/util/mitmproxy1.py')
+
