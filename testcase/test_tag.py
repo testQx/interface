@@ -1,11 +1,14 @@
+import sys
+
 import pytest
 
-from baseapi.tagapi import tagapi
+from api.tagapi import Tagapi
 
 
 class Test_tag():
-    tag = tagapi()
-    test_data = tag.load_yml("../yaml/tag/test_setup.yml")
+    tag = Tagapi()
+    sys.path.append(r"/Users/bytedance/Documents/lfq/interface")
+    test_data = tag.load_yml("./yaml/tag/test_setup.yml")
 
     @classmethod
     # @pytest.mark.param("old_name,new_name",test_data)该用法不可行
@@ -20,7 +23,7 @@ class Test_tag():
     @pytest.mark.parametrize("old_name,new_name", test_data)
     def test_all(self, old_name, new_name):
         for name in (old_name, new_name):
-            tag_id = tagapi.base_jsonpath(self.tag.get_tag(), expr=f'$..tag[?(@.name=="{name}")].id')
+            tag_id = Tagapi.base_jsonpath(self.tag.get_tag(), expr=f'$..tag[?(@.name=="{name}")].id')
             if tag_id:
                 assert self.tag.delete_tag(tag_id[0])['errcode'] == 0
         assert self.tag.add_tag(tag_name=old_name)['errcode'] == 0
@@ -40,3 +43,4 @@ class Test_tag():
     def test_delete_tag(self):
         tag_id = self.tag.base_jsonpath(self.tag.get_tag(), expr='$..tag[?(@.name=="zhangsan")].id')[0]
         assert self.tag.delete_tag(tag_id=tag_id)['errcode'] == 0
+

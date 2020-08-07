@@ -3,7 +3,7 @@ from baseapi.baseapi import baseapi
 
 class public(baseapi):
     def get_token(self,corpsecret):
-        corpid = self.load_yml("../yaml/token.yml")["corpid"]
+        corpid = self.load_yml("./yaml/token.yml")["corpid"]
         data = {
             "method": "get",
             "url": 'https://qyapi.weixin.qq.com/cgi-bin/gettoken',
