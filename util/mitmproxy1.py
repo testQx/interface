@@ -10,7 +10,7 @@ from mitmproxy import http
 
 
 def response(flow: http.HTTPFlow):
-    if ".json" in flow.request.pretty_url:
+    # if ".json" in flow.request.pretty_url:
         method = flow.request.method
         print(flow.response.content)
         url = flow.request.pretty_url.split('?')[0]
@@ -27,5 +27,4 @@ def response(flow: http.HTTPFlow):
         with open("/util/test1_mitm.py", "a") as f:
             f.write(json_data)
         # print(mustache.template(path=(addon_dir + "/util/test_http.mustache"), data=data))
-
 # os.system('mitmdump -s /Users/bytedance/Documents/lfq/interface/util/mitmproxy1.py')

@@ -1,0 +1,1 @@
+{"Files":[{"Type":"json-schema","Filename":"JsonSchema.json","Data":"{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"test\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"test\"\n  ]\n}"}],"Errors":[]}

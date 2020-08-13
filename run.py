@@ -83,7 +83,7 @@ def run_all_case():
     # allure_stories = ["--allure-stories"]
     # allure_stories_args = ['']
     allure_path_args = ['--alluredir', result_dir, '--clean-alluredir']
-    test_args = ['-s', '-q', '--reruns', '2', '--reruns-delay', '1', '--count', '3', '-n', '3']
+    test_args = ['-s', '-q', '--reruns', '2', '--reruns-delay', '1', '--count', '1', '-n', '3']
     # 添加['--ff']先运行上次失败用例，后运行其他用例
     # 添加['--lf']只运行上次failed和error用例
     # 添加['--reruns', 1','--reruns-delay','5'] 失败自动重新跑1次，间隔5秒
@@ -120,4 +120,11 @@ if __name__ == "__main__":
 # 增加异常日志打印处理
 # 增加json-schema对比处理
 # 增加缓存，装饰器等流程处理
-#
+# 初步设想代码流程：测试人员开启charles，配置好代理，按照测试用例顺序来触发请求；
+# 导出chrls文件，通过脚本处理好，剔除掉静态资源，固定下关键名字，
+# 生成json和yaml，然后整合json和yaml自动生成测试用例，
+# 自动去生成测试用例，自行触发一次请求jsonschema库生成jsonschema写入到对应yaml中。
+# 后续第二次跑自动化，请求完自动断言jsonschema发现异常捕获
+
+#Todo
+# 后续升级版：通过mitmdump直接去处理，节省charles导出导入
